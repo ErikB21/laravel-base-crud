@@ -1,0 +1,18 @@
+h1{
+    color: darkorange;
+}
+
+.my_details_thumb{
+    width: 300px;
+    height: 350px;
+    img{
+        width: 100%;
+        outline: 2px solid #0E7CEC;
+    }
+}
+
+.my_details_text{
+    width: 500px;
+    background-color: #0E7CEC;
+    opacity: 0.8;
+}

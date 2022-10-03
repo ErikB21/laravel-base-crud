@@ -1,0 +1,14 @@
+nav{
+    height: 60px;
+    background-color: midnightblue;
+    .logo{
+        width: 50px;
+        img{
+            width: 100%;
+        }
+    }
+    a{
+        font-style: italic;
+        color: white!important;
+    }
+}

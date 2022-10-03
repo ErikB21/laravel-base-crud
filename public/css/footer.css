@@ -1,0 +1,10 @@
+footer {
+  height: 60px;
+  background-color: midnightblue;
+}
+
+footer p,
+footer a {
+  color: white;
+}
+

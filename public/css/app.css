@@ -1,0 +1,104 @@
+.my_home {
+  width: 100%;
+  height: 100%;
+}
+
+.my_home h1 {
+  font-size: 5rem;
+  color: #0E7CEC;
+}
+
+nav {
+  height: 60px;
+  background-color: midnightblue;
+}
+
+nav .logo {
+  width: 50px;
+}
+
+nav .logo img {
+  width: 100%;
+}
+
+nav a {
+  font-style: italic;
+  color: white !important;
+}
+
+footer {
+  height: 60px;
+  background-color: midnightblue;
+}
+
+footer p,
+footer a {
+  color: white;
+}
+
+.my_card {
+  width: calc(20% - 10px);
+  height: 300px;
+  margin: 80px 5px;
+}
+
+.my_card .my_thumb {
+  width: 100%;
+}
+
+.my_card .my_thumb img {
+  width: 100%;
+}
+
+.my_card .my_text {
+  width: 100%;
+  height: 200px;
+  color: white;
+}
+
+.btn {
+  background-color: #0E7CEC;
+}
+
+.my_container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.my_container label {
+  color: white;
+}
+
+.my_container .btn {
+  background-color: #0E7CEC;
+  color: white;
+}
+
+h1 {
+  color: darkorange;
+}
+
+.my_details_thumb {
+  width: 300px;
+  height: 350px;
+}
+
+.my_details_thumb img {
+  width: 100%;
+  outline: 2px solid #0E7CEC;
+}
+
+.my_details_text {
+  width: 500px;
+  background-color: #0E7CEC;
+  opacity: 0.8;
+}
+
+main {
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+  background-image: url("https://wallpaperaccess.com/full/1829697.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+

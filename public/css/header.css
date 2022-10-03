@@ -1,0 +1,18 @@
+nav {
+  height: 60px;
+  background-color: midnightblue;
+}
+
+nav .logo {
+  width: 50px;
+}
+
+nav .logo img {
+  width: 100%;
+}
+
+nav a {
+  font-style: italic;
+  color: white !important;
+}
+

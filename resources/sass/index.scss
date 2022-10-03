@@ -1,0 +1,19 @@
+.my_card{
+    width: calc(100% / 5 - 10px);
+    height: 300px;
+    margin: 80px 5px;
+    .my_thumb{
+        width: 100%;
+        img{
+            width: 100%;
+        }
+    }
+    .my_text{
+        width: 100%;
+        height: 200px;
+        color: white;
+    }
+}
+.btn{
+    background-color: #0E7CEC;
+}

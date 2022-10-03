@@ -1,1 +1,16 @@
-//
+@import '/resources/sass/homepage.scss';
+@import '/resources/sass/header.scss';
+@import '/resources/sass/footer.scss';
+@import '/resources/sass/index.scss';
+@import '/resources/sass/create.scss';
+@import '/resources/sass/show.scss';
+@import '/resources/sass/404.scss';
+
+
+main{
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    background-image: url('https://wallpaperaccess.com/full/1829697.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

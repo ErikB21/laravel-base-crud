@@ -1,0 +1,14 @@
+.my_container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.my_container label {
+  color: white;
+}
+
+.my_container .btn {
+  background-color: #0E7CEC;
+  color: white;
+}
+

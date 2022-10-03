@@ -1,12 +1,15 @@
 @extends('layout.app')
 
 @section('title', 'Crea un nuovo Fumetto')
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/create.css')}}">
+@endsection
 
 
 @section('content')
 
-    <div class="container">
-        <form action="{{route('movies.store')}}" method="POST">
+    <div class="my_container">
+        <form action="{{route('movies.store')}}" class="d-flex flex-column align-items-start justify-content-center" method="POST">
 
             @csrf
 
@@ -45,7 +48,7 @@
             
 
             
-            <button type="submit" class="btn btn-primary">Salva Fumetto</button>
+            <button type="submit" class="btn">Salva Fumetto</button>
         </form>
     </div>
 
