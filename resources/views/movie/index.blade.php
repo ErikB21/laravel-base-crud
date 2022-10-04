@@ -9,7 +9,7 @@
 
     <div class="container p-3">
         <h1 class="text-light">Lista Fumetti</h1>
-        <p class="text-light">Crea il tuo fumetto! Sarai pronto a scalare la vetta?</p>
+        <p class="text-light">Crea, modifica o cancella il tuo fumetto! Sarai pronto a scalare la vetta?</p>
         <a href="{{route('movies.create')}}" class="btn btn-primary">Crea</a>
     </div>
     <div class="container d-flex align-items-center justify-content-between flex-wrap">

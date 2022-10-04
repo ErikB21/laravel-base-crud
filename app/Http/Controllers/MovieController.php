@@ -55,12 +55,8 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        $movie = Movie::find($id);
-
-        if($movie){
-            return view('movie.show', compact('movie'));
-        }
-        abort(404);
+        $movie = Movie::findorFail($id);
+        return view('movie.show', compact('movie'));
     }
 
     /**
@@ -69,9 +65,13 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movie $movie)
     {
-        //
+        if($movie){
+            return view('movie.edit', ['movie' => $movie]);
+        }else{
+            abort(404);
+        }  
     }
 
     /**
@@ -81,9 +81,16 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Movie $movie)
     {
-        //
+        if($movie){
+            $data = $request->all();
+            $movie->update($data);
+            $movie->save();
+            return redirect()->route('movies.edit', ['movie' => $movie]);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -92,8 +99,13 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Movie $movie)
     {
-        //
+        if($movie){
+            $movie->delete();//soft-delete
+            return redirect()->route('movies.index');
+        }else{
+            abort(404);
+        }
     }
 }

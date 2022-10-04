@@ -21,5 +21,14 @@
                 <li class="text-light">{{$movie->type}}</li>
             </ul>
         </div>
+        <div class="d-flex align-items-center flex-column justify-content-center ps-3">
+            <a class="btn btn-warning my-2" href="{{route('movies.edit', ['movie' => $movie])}}">Modifica</a>
+            <form action="{{route('movies.destroy', ['movie' => $movie])}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger my-2">Elimina</button>
+            </form>
+        </div>
+            
     </div>
 @endsection
