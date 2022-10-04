@@ -6,6 +6,13 @@
 @endsection
 
 @section('content')
+    @if (session('status'))
+        <div class="container">
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        </div>
+    @endif
 
     <div class="container p-3">
         <h1 class="text-light">Lista Fumetti</h1>

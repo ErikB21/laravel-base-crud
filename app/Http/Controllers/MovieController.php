@@ -46,7 +46,7 @@ class MovieController extends Controller
 
         $newMovie->save();//salviamo il tutto
 
-        return redirect()->route('movies.index');//ritorniamo la vista index, che ci mostrerà il nostro nuovo fumetto
+        return redirect()->route('movies.index')->with('status', 'Fumetto creato con successo');;//ritorniamo la vista index, che ci mostrerà il nostro nuovo fumetto
         //la redirect() indica dove deve essere reindirizzato come rotta
     }
 
@@ -60,7 +60,7 @@ class MovieController extends Controller
     {
         //variabile che richiama il Model e con metodo findOrFail gli diciamo che se
         //esiste qualche valore, lo ritorna, altrimenti darà la pagina di errore
-        $movie = Movie::findorFail($id);
+        $movie = Movie::findOrFail($id);
 
         //ritorno vista e metodo compact che richiama la variabile $movie
         return view('movie.show', compact('movie'));
@@ -95,7 +95,7 @@ class MovieController extends Controller
             $data = $request->all();//allora predni la richiesta del form di edit
             $movie->update($data);//modifica i dati secondo la richiesta del form
             $movie->save();//salva il tutto nel DB
-            return redirect()->route('movies.edit', ['movie' => $movie]);//ritorna alla pagina con la rotta..
+            return redirect()->route('movies.edit', ['movie' => $movie])->with('status', 'Fumetto aggiornato con successo');//ritorna alla pagina con la rotta..
             //in questo caso resterà nella stessa pagina del edit, ma con le modifiche apportate
         }else{//altrimenti abort
             abort(404);
@@ -112,7 +112,7 @@ class MovieController extends Controller
     {
         if($movie){
             $movie->delete();//soft-delete
-            return redirect()->route('movies.index');
+            return redirect()->route('movies.index')->with('status', 'Fumetto eliminato con successo');
         }else{
             abort(404);
         }
