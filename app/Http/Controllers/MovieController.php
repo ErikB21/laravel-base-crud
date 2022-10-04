@@ -1,4 +1,6 @@
 <?php
+//creo il controller con php artisan make:controller NomeController -r
+//in modo da avere lo scaffolding di tutte le rotte
 
 namespace App\Http\Controllers;
 
@@ -14,8 +16,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
-        return view('movie.index', compact('movies'));
+        $movies = Movie::all();//richiamo Model che passerà tutti i dati che popolano la tabella Movie
+        return view('movie.index', compact('movies'));//ritorno la vista insieme al metodo compact
     }
 
     /**
@@ -25,7 +27,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('movie.create');
+        return view('movie.create');//ritorno la vista, serve per creare un form
     }
 
     /**
@@ -36,15 +38,16 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->all();//prende la richiesta del form
 
-        $newMovie = new Movie();
+        $newMovie = new Movie();//crea una nuova istanza Movie
 
-        $newMovie->fill($data);
+        $newMovie->fill($data);//riempe la variabile dell'istanza con i dati ricevuti dal form
 
-        $newMovie->save();
+        $newMovie->save();//salviamo il tutto
 
-        return redirect()->route('movies.index');
+        return redirect()->route('movies.index');//ritorniamo la vista index, che ci mostrerà il nostro nuovo fumetto
+        //la redirect() indica dove deve essere reindirizzato come rotta
     }
 
     /**
@@ -53,9 +56,13 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)//con id recupero in modo dinamico il valore della rotta
     {
+        //variabile che richiama il Model e con metodo findOrFail gli diciamo che se
+        //esiste qualche valore, lo ritorna, altrimenti darà la pagina di errore
         $movie = Movie::findorFail($id);
+
+        //ritorno vista e metodo compact che richiama la variabile $movie
         return view('movie.show', compact('movie'));
     }
 
@@ -65,13 +72,14 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movie $movie)
+    public function edit(Movie $movie)//chiamiamo direttamente l'istanza con il parametro $movie
     {
-        if($movie){
-            return view('movie.edit', ['movie' => $movie]);
+        if($movie){//se in  $movie c'è qualcosa
+            return view('movie.edit', ['movie' => $movie]);//ritorna la vista edit
         }else{
-            abort(404);
-        }  
+            abort(404);//altrimenti pagina abort
+        } 
+        //difatto molto simile al metodo create(), ma passeremo il metodo in modo PUT
     }
 
     /**
@@ -83,12 +91,13 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        if($movie){
-            $data = $request->all();
-            $movie->update($data);
-            $movie->save();
-            return redirect()->route('movies.edit', ['movie' => $movie]);
-        }else{
+        if($movie){//se in $movie c'è quel fumetto
+            $data = $request->all();//allora predni la richiesta del form di edit
+            $movie->update($data);//modifica i dati secondo la richiesta del form
+            $movie->save();//salva il tutto nel DB
+            return redirect()->route('movies.edit', ['movie' => $movie]);//ritorna alla pagina con la rotta..
+            //in questo caso resterà nella stessa pagina del edit, ma con le modifiche apportate
+        }else{//altrimenti abort
             abort(404);
         }
     }

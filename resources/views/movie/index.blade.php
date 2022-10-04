@@ -11,6 +11,7 @@
         <h1 class="text-light">Lista Fumetti</h1>
         <p class="text-light">Crea, modifica o cancella il tuo fumetto! Sarai pronto a scalare la vetta?</p>
         <a href="{{route('movies.create')}}" class="btn btn-primary">Crea</a>
+        <!--porta alla rotta che ci permtte di creare un nuovo fumetto-->
     </div>
     <div class="container d-flex align-items-center justify-content-between flex-wrap">
         @forelse ($movies as $movie)
@@ -21,6 +22,7 @@
                 <div class="my_text">
                     <h5 class="">{{$movie->title}}</h5>
                     <a href="{{route('movies.show', ['movie' => $movie->id])}}" class="btn btn-primary">Dettaglio fumetto</a>
+                            <!--Questa rotta riporterà alla pagina del dettaglio, con rotta show e id del prodotto specifico-->
                 </div>
             </div>
         @empty

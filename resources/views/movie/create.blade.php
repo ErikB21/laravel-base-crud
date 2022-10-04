@@ -10,7 +10,13 @@
 
     <div class="my_container">
         <form action="{{route('movies.store')}}" class="d-flex flex-column align-items-start justify-content-center" method="POST">
+        <!--Il form avrà una rotta che punterà a store, e metodo POST
+            che mi permette di inviare tutti i dati nel form al metodo di laravel
+            che salverà i dati nel DB. Nelle input, name e value dovranno coincidere 
+            con gli id della colonna che richiameremo. Questi dati naturlamente 
+            saranno inviati al metodo movies.store-->
 
+            <!--aggiungiamo @csrf per prevenire abusi nel nostro servizio di form-->
             @csrf
 
             <div class="mb-3">

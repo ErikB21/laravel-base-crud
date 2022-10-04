@@ -10,8 +10,14 @@
 
     <div class="my_container">
         <form action="{{route('movies.update', ['movie' => $movie->id])}}" class="d-flex flex-column align-items-start justify-content-center" method="POST">
-
+    <!--il form girerà la richiesta al metodo update, insieme all'id del prodotto in dettaglio
+        con metodo POST(ma in realtà con metodo PUT, solo che il form non supporta questo metodo)-->
             @csrf
+            <!--quindi Laravel ci mette a disposizione un @method() che cambia
+                completamente il metodo del form e finalmente grazie alla logica
+                del metodo update siamo in grado di modificare un fumetto. Oltremodo
+                aggiungendo la value e passando quello che è il nostro id della colonna, le modifiche
+                saranno già presenti nelle varie input senza che dobbiamo riscrivere tutto da capo-->
             @method('PUT')
 
             <div class="mb-3">

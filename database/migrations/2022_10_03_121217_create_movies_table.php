@@ -23,7 +23,7 @@ class CreateMoviesTable extends Migration
             $table->date('sale_date');
             $table->string('type', 20);
             $table->timestamps();
-        });
+        });//creo la tabella nel mio DB con il nome delle colonne, poi lancio le migratiion
     }
 
     /**
