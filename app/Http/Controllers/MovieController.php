@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class MovieController extends Controller
 {
@@ -38,6 +39,19 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate(//validiamo la richiesta del form per creare un nuovo fumetto
+            [
+                'thumb' => 'required|max:255|url',
+                'title' => 'required|min:5|max:255',
+                'price' => 'required|min:3|max:6',
+                'series' => 'required|min:5|max:50',
+                'sale_date' => 'required|max:10',
+                'type' => ['required', Rule::in(['comic-book', 'graphic-novel'])],
+                'description' => 'required|max:65535'
+            ]
+        );
+
         $data = $request->all();//prende la richiesta del form
 
         $newMovie = new Movie();//crea una nuova istanza Movie
@@ -46,7 +60,7 @@ class MovieController extends Controller
 
         $newMovie->save();//salviamo il tutto
 
-        return redirect()->route('movies.index')->with('status', 'Fumetto creato con successo');;//ritorniamo la vista index, che ci mostrerà il nostro nuovo fumetto
+        return redirect()->route('movies.index')->with('status', 'Fumetto creato con successo');//ritorniamo la vista index, che ci mostrerà il nostro nuovo fumetto
         //la redirect() indica dove deve essere reindirizzato come rotta
     }
 
@@ -73,7 +87,7 @@ class MovieController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Movie $movie)//chiamiamo direttamente l'istanza con il parametro $movie
-    {
+    {   
         return view('movie.edit', ['movie' => $movie]);//ritorna la vista edit 
         //difatto molto simile al metodo create(), ma passeremo il metodo in modo PUT
     }
@@ -87,6 +101,18 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
+
+        $request->validate(//validiamo la richiesta del form per modificare un nuovo fumetto
+            [
+                'thumb' => 'required|max:255|url',
+                'title' => 'required|min:5|max:255',
+                'price' => 'required|min:3|max:6',
+                'series' => 'required|min:5|max:50',
+                'sale_date' => 'required|max:10',
+                'type' => ['required', Rule::in(['comic-book', 'graphic-novel'])],
+                'description' => 'required|max:65535'
+            ]
+        );
         $data = $request->all();//allora predni la richiesta del form di edit
         $movie->update($data);//modifica i dati secondo la richiesta del form
         $movie->save();//salva il tutto nel DB
