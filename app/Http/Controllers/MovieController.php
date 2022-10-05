@@ -60,7 +60,7 @@ class MovieController extends Controller
     {
         //variabile che richiama il Model e con metodo findOrFail gli diciamo che se
         //esiste qualche valore, lo ritorna, altrimenti darà la pagina di errore
-        $movie = Movie::findOrFail($id);
+        $movie = Movie::find($id);
 
         //ritorno vista e metodo compact che richiama la variabile $movie
         return view('movie.show', compact('movie'));
@@ -74,11 +74,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)//chiamiamo direttamente l'istanza con il parametro $movie
     {
-        if($movie){//se in  $movie c'è qualcosa
-            return view('movie.edit', ['movie' => $movie]);//ritorna la vista edit
-        }else{
-            abort(404);//altrimenti pagina abort
-        } 
+        return view('movie.edit', ['movie' => $movie]);//ritorna la vista edit 
         //difatto molto simile al metodo create(), ma passeremo il metodo in modo PUT
     }
 
@@ -91,15 +87,11 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        if($movie){//se in $movie c'è quel fumetto
-            $data = $request->all();//allora predni la richiesta del form di edit
-            $movie->update($data);//modifica i dati secondo la richiesta del form
-            $movie->save();//salva il tutto nel DB
-            return redirect()->route('movies.edit', ['movie' => $movie])->with('status', 'Fumetto aggiornato con successo');//ritorna alla pagina con la rotta..
-            //in questo caso resterà nella stessa pagina del edit, ma con le modifiche apportate
-        }else{//altrimenti abort
-            abort(404);
-        }
+        $data = $request->all();//allora predni la richiesta del form di edit
+        $movie->update($data);//modifica i dati secondo la richiesta del form
+        $movie->save();//salva il tutto nel DB
+        return redirect()->route('movies.edit', ['movie' => $movie])->with('status', 'Fumetto aggiornato con successo');//ritorna alla pagina con la rotta..
+        //in questo caso resterà nella stessa pagina del edit, ma con le modifiche apportate
     }
 
     /**

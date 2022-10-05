@@ -23,7 +23,7 @@
         </div>
         <div class="d-flex align-items-center flex-column justify-content-center ps-3">
             <a class="btn btn-warning my-2" href="{{route('movies.edit', ['movie' => $movie])}}">Modifica</a>
-            <form action="{{route('movies.destroy', ['movie' => $movie])}}" method="POST">
+            <form action="{{route('movies.destroy', ['movie' => $movie])}}" method="POST" onsubmit="return confirm('Sei sicuro di volerlo cancellare?')">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger my-2">Elimina</button>
