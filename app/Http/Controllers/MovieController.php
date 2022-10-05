@@ -49,6 +49,10 @@ class MovieController extends Controller
                 'sale_date' => 'required|max:10',
                 'type' => ['required', Rule::in(['comic-book', 'graphic-novel'])],
                 'description' => 'required|max:65535'
+            ],
+            [
+                'thumb.url' => 'Formato URL non valido!',
+                'thumb.required' => 'Il campo Images deve essere necessariamente compilato!'
             ]
         );
 
@@ -111,6 +115,10 @@ class MovieController extends Controller
                 'sale_date' => 'required|max:10',
                 'type' => ['required', Rule::in(['comic-book', 'graphic-novel'])],
                 'description' => 'required|max:65535'
+            ],
+            [
+                'thumb.url' => 'Formato URL non valido!',
+                'thumb.required' => 'Il campo Images deve essere necessariamente compilato!'
             ]
         );
         $data = $request->all();//allora predni la richiesta del form di edit
