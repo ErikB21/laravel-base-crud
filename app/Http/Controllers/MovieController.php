@@ -44,9 +44,9 @@ class MovieController extends Controller
             [
                 'thumb' => 'required|max:255|url',
                 'title' => 'required|min:5|max:255',
-                'price' => 'required|min:3|max:6',
+                'price' => 'required|numeric|max:99.99',
                 'series' => 'required|min:5|max:50',
-                'sale_date' => 'required|max:10',
+                'sale_date' => 'required|date',
                 'type' => ['required', Rule::in(['comic-book', 'graphic-novel'])],
                 'description' => 'required|max:65535'
             ],
